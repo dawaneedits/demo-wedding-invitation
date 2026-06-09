@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arohi & Sanket Wedding Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <audio id="weddingSong" loop>
+        <source src="song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="phone-wrapper">
+
+<!-- Replace your old button line with this inside index.html -->
+<button id="musicToggle" class="music-toggle-btn hidden" onclick="toggleMusic()" aria-label="Toggle Music">
+    <svg id="musicIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+        <!-- Default State: Audio Waves Sounding On -->
+        <path d="M5 17h-2c-1.103 0-2-.897-2-2v-6c0-1.103.897-2 2-2h2l7-5v20l-7-5zm14-5c0-3.31-2.69-6-6-6v1.5c2.481 0 4.5 2.019 4.5 4.5s-2.019 4.5-4.5 4.5v1.5c3.31 0 6-2.69 6-6zm3 0c0-5.514-4.486-10-10-10v1.5c4.687 0 8.5 3.813 8.5 8.5s-3.813 8.5-8.5 8.5v1.5c5.514 0 10-4.486 10-10z"/>
+    </svg>
+</button>
+        <div id="curtain-container" class="curtain-container">
+            <div class="curtain left-curtain"></div>
+            <div class="curtain right-curtain"></div>
+            <div class="curtain-content">
+                <div class="wax-seal" onclick="openCurtain()">
+                    <span>A&S</span>
+                </div>
+                <p class="tap-text">Tap to Open</p>
+            </div>
+        </div>
+
+        <div class="invite-card" id="inviteCard">
+            
+            <section class="section-hero fade-in">
+                <div class="hearts-container" id="heartsContainer"></div>
+
+                <div class="hero-top">
+                    <span class="heart-icon-main">♥</span>
+                    <h3 class="subtitle">WE ARE THRILLED TO ANNOUNCE</h3>
+                </div>
+
+                <h1 class="couple-names animated-hero-name">AROHI <br><span class="and">&</span><br> SANKET</h1>
+                
+                <div class="hero-bottom">
+                    <p class="announcement">ARE TYING THE KNOT</p>
+
+                    <div class="scratch-container">
+                        <div class="secret-date">
+                            <h2>20 November 2026</h2>
+                            <p class="location-tag">✨ SAVE THE DATE ✨</p>
+                        </div>
+                        <canvas id="scratchCanvas" width="320" height="130"></canvas>
+                    </div>
+
+                    <div id="countdown-area" class="countdown-container blurred-hidden">
+                        <div class="time-box"><span id="days" class="time-num">000</span><span class="time-label">DAYS</span></div>
+                        <div class="time-box"><span id="hours" class="time-num">00</span><span class="time-label">HRS</span></div>
+                        <div class="time-box"><span id="minutes" class="time-num">00</span><span class="time-label">MINS</span></div>
+                        <div class="time-box"><span id="seconds" class="time-num">00</span><span class="time-label">SECS</span></div>
+                    </div>
+
+                    <div class="scroll-indicator">
+                        <p>Scroll to See Bride & Groom</p>
+                        <span class="arrow">↓</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-profile section-bride entry-trigger">
+                <div class="flower-mala mala-left"></div>
+                <div class="flower-mala mala-right"></div>
+
+                <h3 class="profile-title-tag animated-child item-down">Introducing the Beautiful</h3>
+                <h2 class="profile-name animated-child item-down">The Bride</h2>
+                
+                <div class="square-photo-box animated-child item-scale">
+                    <img src="bride1.png" alt="Arohi - The Bride" class="profile-png">
+                </div>
+                
+                <h3 class="person-name animated-child item-up">Arohi</h3>
+                <p class="profile-bio animated-child item-up">A creative soul, tech enthusiast, and the heartbeat of this beautiful journey ahead. Ready to step into a lifelong partnership of love and happiness.</p>
+            </section>
+
+            <!-- Split Hands Animated Section with Surnames -->
+            <div class="hands-transition-divider side-animate-row">
+                <div class="hands-assembly-wrapper">
+                    <!-- Top Text: Bride's Surname -->
+                    <div class="surname-text bride-surname slide-from-top-fade">BANSODE</div>
+
+                    <!-- Left Side: Bride's Hand -->
+                    <img src="bridehand.png" alt="Bride's Hand" class="split-hand bride-hand-slide">
+                    
+                    <!-- Right Side: Groom's Hand -->
+                    <img src="groomhand.png" alt="Groom's Hand" class="split-hand groom-hand-slide">
+
+                    <!-- Bottom Text: Groom's Surname -->
+                    <div class="surname-text groom-surname slide-from-bottom-fade">SHINDE</div>
+                </div>
+            </div>
+
+            <section class="section-profile section-groom entry-trigger">
+                <div class="flower-mala mala-left"></div>
+                <div class="flower-mala mala-right"></div>
+
+                <h3 class="profile-title-tag animated-child item-down">Introducing the Dashing</h3>
+                <h2 class="profile-name animated-child item-down">The Groom</h2>
+                
+                <div class="square-photo-box animated-child item-scale">
+                    <img src="broom1.png" alt="Sanket - The Groom" class="profile-png">
+                </div>
+                
+                <h3 class="person-name animated-child item-up">SANKET</h3>
+                <p class="profile-bio animated-child item-up">An analytical mind with a heart of gold, ready to embark on this incredible new chapter. Dedicated to creating a lifetime of shared dreams.</p>
+            </section>
+
+            <section class="section-events fade-in">
+                <div class="hashtag">#ArohiSanket</div>
+                <h2 class="section-title">Wedding Ceremonies</h2>
+                <p class="section-desc">Join us across our beautiful celebrations</p>
+                
+                <div class="wardrobe-container">
+                    <div class="wardrobe-row side-animate-row">
+                        <div class="wardrobe-image-box slide-from-left"><img src="engagement.png" alt="Engagement" class="wardrobe-img"></div>
+                        <div class="wardrobe-text-card slide-from-right">
+                            <span class="date-badge top-right">MON | 16 NOV</span>
+                            <h4 class="event-name">1. THE ENGAGEMENT</h4>
+                            <h5 class="event-subname">Rings & Romance</h5>
+                            <p class="dress-code-label">Dress code:</p>
+                            <p class="dress-code-desc">Formal Evening Wear / Tuxedos & Gowns</p>
+                        </div>
+                    </div>
+
+                    <div class="wardrobe-row side-animate-row">
+                        <div class="wardrobe-text-card slide-from-left">
+                            <span class="date-badge top-left">WED | 18 NOV</span>
+                            <h4 class="event-name">2. SANGEET & MEHNDI</h4>
+                            <h5 class="event-subname">The Glam Night</h5>
+                            <p class="dress-code-label">Dress code:</p>
+                            <p class="dress-code-desc">Glitzy Traditional / Vibrant Indo-Western Fusions</p>
+                        </div>
+                        <div class="wardrobe-image-box slide-from-right"><img src="sangeet.png" alt="Sangeet" class="wardrobe-img"></div>
+                    </div>
+
+                    <div class="wardrobe-row side-animate-row">
+                        <div class="wardrobe-image-box slide-from-left"><img src="haldi.png" alt="Haldi" class="wardrobe-img"></div>
+                        <div class="wardrobe-text-card slide-from-right">
+                            <span class="date-badge top-right">THU | 19 NOV</span>
+                            <h4 class="event-name">3. HALDI CARNIVAL</h4>
+                            <h5 class="event-subname">Shades of Yellow</h5>
+                            <p class="dress-code-label">Dress code:</p>
+                            <p class="dress-code-desc">Traditional Yellow Attire & Festive Prints</p>
+                        </div>
+                    </div>
+
+                    <div class="wardrobe-row side-animate-row">
+                        <div class="wardrobe-text-card slide-from-left">
+                            <span class="date-badge top-left">FRI | 20 NOV</span>
+                            <h4 class="event-name">4. THE WEDDING</h4>
+                            <h5 class="event-subname">The Big Day</h5>
+                            <p class="dress-code-label">Dress code:</p>
+                            <p class="dress-code-desc">Royal Indian Traditional Splendor</p>
+                        </div>
+                        <div class="wardrobe-image-box slide-from-right"><img src="wedding.png" alt="The Wedding" class="wardrobe-img"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-map fade-in">
+                <h2 class="section-title">The Venue Location</h2>
+                <p class="venue-name">Essence Banquet</p>
+                <p class="venue-address">Lucknow, Uttar Pradesh</p>
+                <div class="map-wrapper">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.887284421111!2d80.943144!3d26.843904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDUwJzM4LjIiTiA4MMKwNTYnMjguNCJF!5e0!3m2!1sen!2sin!4v1625000000000!5m2!1sen!2sin" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <a href="https://maps.google.com" target="_blank" class="btn premium-btn">OPEN IN GOOGLE MAPS</a>
+            </section>
+
+            <section class="section-thanks fade-in">
+                <div class="thanks-photo-box">
+                    <img src="thanks-couple.png" alt="Thank You Celebration" class="thanks-img">
+                </div>
+                <span class="heart-icon">♥</span>
+                <h2 class="thank-you-title premium-blink-text">Thank You</h2>
+                <p class="thanks-message premium-blink-subtext">Your presence, love, and blessings mean the world to us. Please join us to celebrate our new beginning at the ceremonies!</p>
+                <div class="signature">With Love,<br><strong>The Families of Arohi & Sanket</strong></div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
